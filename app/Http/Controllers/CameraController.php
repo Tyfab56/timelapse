@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Camera;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CameraController extends Controller
 
@@ -24,6 +25,11 @@ class CameraController extends Controller
         if (!$camera) {
             return to_route('home')->withErrors($message = 'Pas de caméra à ce nom');
         }
+
+        // Chargement de l'image
+        $image = Storage::disk('ftp');
+        dd($image);
+
         return view('camera', compact('camera'));
     }
 
