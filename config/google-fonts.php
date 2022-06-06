@@ -8,6 +8,8 @@ return [
      */
     'fonts' => [
         'default' => 'https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,700;1,400;1,700',
+        'MontSerrat' => 'https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap',
+        'Kaushan' => 'https://fonts.googleapis.com/css?family=Kaushan+Script&amp;display=swap'
     ],
 
     /*
@@ -32,7 +34,7 @@ return [
      * When something goes wrong fonts are loaded directly from Google.
      * With fallback disabled, this package will throw an exception.
      */
-    'fallback' => ! env('APP_DEBUG'),
+    'fallback' => !env('APP_DEBUG'),
 
     /*
      * This user agent will be used to request the stylesheet from Google Fonts.
