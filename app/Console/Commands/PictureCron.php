@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Camera;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Filesystem\Filesystem;
@@ -30,12 +31,15 @@ class PictureCron extends Command
      */
     public function handle()
     {
-        //$disk = Storage::disk('ftp');
-        // lister toutes les repertoires
-        //$files = $disk->allDirectories();
+        $cameras = Camera::all();
+        foreach ($cameras as $cam) {
+            $camera = $cam->camera_id;
+            $success = File::copyDirectory(base_path('../ftp/' . $camera), base_path('/storage/app/public/ftp/' . $camera), true);
+            File::cleanDirectory(base_path('../ftp/' . $camera));
+        }
 
-        $success = File::copyDirectory(base_path('../ftp'), base_path('/storage/app/public/ftp'));
 
-        return 0;
+
+        return 1;
     }
 }
