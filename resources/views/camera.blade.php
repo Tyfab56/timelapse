@@ -20,7 +20,7 @@
             </div>
            <div class="row">
                <div class="col-md-8 offset-md-2 text-center mt-4">
-                <img src="../{{ $camera->directory }}/last.jpg" width="800px" height="400px">
+                <img src="../{{ $camera->directory }}/last.jpg" width="800px" height="4git init00px">
                </div>
 
              

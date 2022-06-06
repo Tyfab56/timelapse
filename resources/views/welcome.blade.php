@@ -29,6 +29,8 @@
                        
                             <div style="text-align: center">
                             <button type="submit" class="btn btn-primary mt-3 text-center ">Voir la caméra</button>
+                            <a class="btn btn-primary" href="{{ route('copy') }}" >Copier les fichiers</a>
+
                             @if ($errors->any())
                             <div class="alert alert-danger mt-2">
                                 <ul>

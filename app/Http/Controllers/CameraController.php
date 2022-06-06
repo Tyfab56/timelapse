@@ -27,10 +27,10 @@ class CameraController extends Controller
         }
 
         // Chargement de l'image
-        $image = Storage::disk('ftp')->get('/' . $camera . '/last.php');
-        dd($image);
+        $image = Storage::disk('ftp')->get($camera->camera_id . '/last.jpg');
 
-        return view('camera', compact('camera'));
+
+        return view('camera', compact('camera', 'image'));
     }
 
     public function find(Request $request)

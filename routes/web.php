@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CameraController;
+use App\Http\Controllers\MovedirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,13 @@ Route::get('/dashboard', function () {
 Route::get('/camera', [CameraController::class, 'find'])->name('camera.find');
 
 Route::get('/camera/{id}', [CameraController::class, 'camera'])->name('camera.id');
+Route::get('copy', [MovedirController::class, 'copy'])->name('copy');
+
+Route::prefix('image')->group(
+    function () {
+        Route::get('job/{filename}', 'ImageController@showJobImage')->name('jobImage');
+    }
+);
 
 
 require __DIR__ . '/auth.php';
