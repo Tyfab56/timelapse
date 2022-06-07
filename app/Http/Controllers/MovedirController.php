@@ -12,8 +12,11 @@ class MovedirController extends Controller
     protected function todb()
     {
         $cameras = Camera::all();
+
+
         foreach ($cameras as $cam) {
             $camera = $cam->camera_id;
+            $cameraid = $cam->id;
 
             // Verification des repertoires de stockage
             if (!File::isDirectory(base_path('/storage/app/public/ftp/' . $camera . '/medias'))) {
@@ -34,24 +37,19 @@ class MovedirController extends Controller
                 if (!in_array($repertoire, $exclude)) {
                     $dateimg = $image->getCTime();
                     $fichier = $image->getFilename();
-                    $success = File::move('/storage/app/public/ftp/' . $camera . '/' . $repertoire . '/' . $fichier, '/storage/app/public/ftp/' . $camera . '/medias/' . $fichier);
-                    dd($success);
+                    $success = File::move(base_path('/storage/app/public/ftp/' . $camera . '/' . $repertoire . '/' . $fichier),  base_path('/storage/app/public/ftp/' . $camera . '/medias/' . $fichier));
 
                     // Stockage de l'information    
                     $imagedb = new Images;
                     $imagedb->fichier = $fichier;
-                    $imagedb->camera_id = $camera;
-                    $imagedb->datetl = $dateimg;
+                    $imagedb->camera_id = $cameraid;
+                    $imagedb->datetl = date("Y-m-d H:i:s", $dateimg);
                     $imagedb->save();
-                    dd('pas dedans', $image);
-                } else {
-                    dd('dedans');
+
+                    // copier la derniere image dans display
+
+                    File::copy(base_path('/storage/app/public/ftp/' . $camera . '/medias/' . $fichier),  base_path('/storage/app/public/ftp/' . $camera . '/display/last.jpg'));
                 };
-
-
-
-                // deplacer ce fichier dans medias
-
             }
         }
 
