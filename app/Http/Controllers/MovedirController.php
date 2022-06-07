@@ -13,9 +13,9 @@ class MovedirController extends Controller
         $cameras = Camera::all();
         foreach ($cameras as $cam) {
             $camera = $cam->camera_id;
-            $success = File::allFiles(base_path('/storage/app/public/ftp/' . $camera));
-
-            dd($success);
+            $images = File::allFiles(base_path('/storage/app/public/ftp/' . $camera));
+            foreach ($cameras as $cam) {
+            }
         }
 
 

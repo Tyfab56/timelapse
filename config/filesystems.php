@@ -44,7 +44,9 @@ return [
 
         'ftp' => [
             'driver' => 'local',
-            'root'   => base_path('../ftp'),
+            'root' => storage_path('app/public/ftp'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
         ],
 
         's3' => [
