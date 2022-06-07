@@ -20,7 +20,7 @@
             </div>
            <div class="row">
                <div class="col-md-8 offset-md-2 text-center mt-4">
-                <img src="{{ Storage::disk('ftp')->url('/becarre1/last.jpg')}}" width="800px" height="400px">
+                <img src="{{asset('/storage/ftp/')}}/{{$camera->camera_id}}/last.jpg" width="800px" height="400px">
                </div>
 
              
