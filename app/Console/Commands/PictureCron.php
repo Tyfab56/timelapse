@@ -66,8 +66,9 @@ class PictureCron extends Command
                 if (!in_array($repertoire, $exclude)) {
                     $dateimg = $image->getCTime();
                     $fichier = $image->getFilename();
+                    // fairele transfert uniquement si la taille ne varie pas
                     $success = File::move(base_path('/storage/app/public/ftp/' . $camera . '/' . $repertoire . '/' . $fichier),  base_path('/storage/app/public/ftp/' . $camera . '/medias/' . $fichier));
-
+                    sleep(2);
                     // Stockage de l'information    
                     $imagedb = new Images;
                     $imagedb->fichier = $fichier;
