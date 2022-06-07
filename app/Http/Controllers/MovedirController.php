@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\File;
 
 class MovedirController extends Controller
 {
-    protected function copy()
+    protected function todb()
     {
         $cameras = Camera::all();
         foreach ($cameras as $cam) {
