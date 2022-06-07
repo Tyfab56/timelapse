@@ -36,6 +36,7 @@ class PictureCron extends Command
         foreach ($cameras as $cam) {
             $camera = $cam->camera_id;
             $success = File::copyDirectory(base_path('../ftp/' . $camera), base_path('/storage/app/public/ftp/' . $camera), true);
+            sleep(4);
             File::cleanDirectory(base_path('../ftp/' . $camera));
         }
         // Préparation des médias
