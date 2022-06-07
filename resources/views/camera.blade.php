@@ -15,12 +15,12 @@
             <div class="row text-center mt-4">
                 <H1>TIMELAPSE REUNION</H1>
                 <h2>CAMERA {{ $camera->camera_id }}</h2>
-                <H5><b>Temps de raffraichissement 1 mn</b></H5>
+                <H5><b>Temps de raffraichissement 5 mn</b></H5>
 
             </div>
            <div class="row">
                <div class="col-md-8 offset-md-2 text-center mt-4">
-                <img src="{{asset('/storage/ftp/')}}/{{$camera->camera_id}}/last.jpg" width="800px" height="400px">
+                <img src="{{asset('/storage/ftp/')}}/{{$camera->camera_id}}/display/last.jpg" width="800px" height="400px">
                </div>
 
              
